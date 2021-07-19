@@ -52,8 +52,6 @@
             const storage = firebase.storage();
             var uid;
 
-            database.ref("")
-
             firebase.auth().onAuthStateChanged((user)=> {
                 if(user) {
                     uid = user.uid;
