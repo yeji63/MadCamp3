@@ -39,13 +39,20 @@
         </div>
       </div>
     </nav>
-
-
-    <div class="container mt-3">
+    
+    <div class="container">
+        <img class="detailimg" src='image/basic..png' style="max-width: 40%; max-height: 50%;"></img>
+        <div class="user">
+            <img class="profile" src='image/윤예지.jpg' style="width: 80px; height: 80px; margin-top: 20px;"></img>
+            <span class="name" style="size: 100px;">이름</span>
+            <div class="button" style="background-color: rgb(226, 226, 226); width: 100px; height: 40px; text-align: center; border-radius: 10px; line-height: 40px; cursor: pointer; display: inline-block; margin-left: 23%;">채팅하기</div>
+        </div>
+        <hr width="40%">
+        <h5 class="title">상품타이틀</h5>
+        <p class="date" style="color: darkgrey;">2021년 07월 19일</p>
+        <p class="price">20000원</p>
+        <p class="content">내용 와라라라</p>
     </div>
-
-
-
 
     <!-- update the version number as needed -->
     <script src="/__/firebase/8.7.1/firebase-app.js"></script>
@@ -76,16 +83,16 @@
 
     </script>
 
-    <script>
-      var arr = new Array();
+    <!-- <script>
+        
+        console.log(localStorage.getItem('id'));
+        const db = firebase.firestore();
+        var productRef = db.collection("product");
+        productRef.doc(localStorage.getItem('id')).get().then((doc)=>{
+          if (doc.exists) {
+            console.log("Document data:", doc.data());
 
-      const db = firebase.firestore();
-      db.collection('product').get().then((결과)=>{
-        결과.forEach((doc)=>{
-          console.log(doc.data())
-          //arr.push(doc.data().제목)
-          //console.log(arr);
-          var 템플릿 = `<div class="product">
+            var 템플릿 = `<div class="product">
           <div class="thumbnail" style="background-image: url(${doc.data().이미지})"></div>
           <div class="flex-grow-1 p-4">
             <h5 class="title">${doc.data().제목}</h5>
@@ -96,32 +103,19 @@
           </div>
           </div>`;
           $('.container').append(템플릿)
-          
-          $(".title").click(function(){
-            arr.push(doc.id)
-            console.log(doc.id + "아이디 출력");
-            console.log(arr[0]+ "찾았다아이디");
-            //console.log(doc.data().제목+"클릭되었음");
-            localStorage.setItem('id', arr[0]);
-            location.href="detail.html"
-          })
 
-        })
-        ㄴ
-        
-        var title = document.getElementsByClassName("title");
-        title.click(function(){
-            var id_check = $(this).attr("id");
-            console.log(doc.data().제목+"클릭되었음");
-            // console.log(event.target.nodeName); //H5
-            // console.log(event.target.value);  //undefined
-            // console.log(event.currentTarget.value)  //undefined
-            // console.log($(event.target))
-            // console.log($(event.currentTarget))
-            // localStorage.setItem('title', title);
-          });
-      })
-    </script>
+
+          } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!"); 
+          }
+        }).catch((error) => {
+          console.log("Error getting document:", error);
+        });
+
+
+
+    </script> -->
 
   </body>
 

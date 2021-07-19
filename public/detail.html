@@ -40,11 +40,8 @@
       </div>
     </nav>
 
-
-    <div class="container mt-3">
+    <div class="box">
     </div>
-
-
 
 
     <!-- update the version number as needed -->
@@ -77,50 +74,39 @@
     </script>
 
     <script>
-      var arr = new Array();
-
-      const db = firebase.firestore();
-      db.collection('product').get().then((결과)=>{
-        결과.forEach((doc)=>{
-          console.log(doc.data())
-          //arr.push(doc.data().제목)
-          //console.log(arr);
-          var 템플릿 = `<div class="product">
-          <div class="thumbnail" style="background-image: url(${doc.data().이미지})"></div>
-          <div class="flex-grow-1 p-4">
-            <h5 class="title">${doc.data().제목}</h5>
-            <p class="date">${doc.data().날짜.toDate().getFullYear()}년 ${doc.data().날짜.toDate().getMonth()}월 ${doc.data().날짜.toDate().getDate()}일 
-              ${doc.data().날짜.toDate().getHours()}시 ${doc.data().날짜.toDate().getMinutes()}분</p>
-            <p class="price">${doc.data().가격}원</p>
-            <p class="float-end">🤍0</p>
-          </div>
-          </div>`;
-          $('.container').append(템플릿)
-          
-          $(".title").click(function(){
-            arr.push(doc.id)
-            console.log(doc.id + "아이디 출력");
-            console.log(arr[0]+ "찾았다아이디");
-            //console.log(doc.data().제목+"클릭되었음");
-            localStorage.setItem('id', arr[0]);
-            location.href="detail.html"
-          })
-
-        })
-        ㄴ
         
-        var title = document.getElementsByClassName("title");
-        title.click(function(){
-            var id_check = $(this).attr("id");
-            console.log(doc.data().제목+"클릭되었음");
-            // console.log(event.target.nodeName); //H5
-            // console.log(event.target.value);  //undefined
-            // console.log(event.currentTarget.value)  //undefined
-            // console.log($(event.target))
-            // console.log($(event.currentTarget))
-            // localStorage.setItem('title', title);
-          });
-      })
+        console.log(localStorage.getItem('id'));
+        const db = firebase.firestore();
+        var productRef = db.collection("product");
+        productRef.doc(localStorage.getItem('id')).get().then((doc)=>{
+          if (doc.exists) {
+            console.log("Document data:", doc.data());
+
+            var template = `<img class="detailimg" src=${doc.data().이미지} style="width: 40%"; height:45%;"></img>
+            <div class="user">
+            <img class="profile" src='image/unknown.jpg' style="width: 5%; height: 5%; margin-top: 1%;"></img>
+            <span class="name" style="margin-top: 5%; margin-left: 1%; font-size: 20px; text-align: center; line-height: 80px">이름</span>
+            <div class="button" style="background-color: rgb(226, 226, 226); width: 100px; height: 40px; text-align: center; border-radius: 10px; line-height: 40px; cursor: pointer; display: inline-block; margin-left: 23%;">채팅하기</div>
+            </div>
+            <hr width="40%">
+            <h5 class="title" style="font-size: 25px"><b>${doc.data().제목}</b></h5>
+            <p class="date" style="color: darkgrey;">${doc.data().날짜.toDate().getFullYear()}년 ${doc.data().날짜.toDate().getMonth()}월 ${doc.data().날짜.toDate().getDate()}일 
+              ${doc.data().날짜.toDate().getHours()}시 ${doc.data().날짜.toDate().getMinutes()}분</p>
+            <p class="price"><b>${doc.data().가격}원</b></p>
+            <p class="content" style="margins-top:600px">${doc.data().내용}</p>`;
+
+          $('.box').append(template)
+
+
+          } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!"); 
+          }
+        }).catch((error) => {
+          console.log("Error getting document:", error);
+        });
+
+
     </script>
 
   </body>
