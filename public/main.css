@@ -28,11 +28,6 @@
   align-content: center;
   margin-left: 35%;
 }
-/* .user .profile {
-  display: block;
-  width: 20px;
-  height: 20px;
-} */
 .user .profile {
   border-radius: 50px;
 }
