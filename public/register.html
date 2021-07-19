@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <!-- bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link href="register.css" rel="stylesheet">
+    </head>
+    <body>
+        <!-- update the version number as needed -->
+        <script src="/__/firebase/8.7.1/firebase-app.js"></script>
+        <script src="/__/firebase/8.7.1/firebase-auth.js"></script>
+        <script src="/__/firebase/8.7.1/firebase-firestore.js"></script>
+        <script src="/__/firebase/8.7.1/firebase-storage.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+        <script>
+            var firebaseConfig = {
+            apiKey: "AIzaSyDcou5T9263ShlgwpPQpFyozIXrUNUcj2w",
+            authDomain: "madcamp3-f199e.firebaseapp.com",
+            projectId: "madcamp3-f199e",
+            storageBucket: "madcamp3-f199e.appspot.com",
+            messagingSenderId: "645552582467",
+            appId: "1:645552582467:web:52b181505f2aefdcb889f6",
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">CARROT MARKET</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapsse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="upload.html">Upload</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="login.html'">Login</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+            </div>
+        </div>
+        </nav>
+        <div class="container mt-3">
+            <div class="mb-3">
+            <h2>JOIN US</h2>
+            <input type="text" class="form-control" placeholder="name" id="name-new">
+            <input type="email" class="form-control" placeholder="email" id="email-new">
+            <input type="password" class="form-control" placeholder="pw" id="pw-new">
+            <button type="submit" class="btn btn-danger" id="register">가입하기</button>
+            </div>
+            <div class="caption">
+                <a href="login.html">로그인</a>
+            </div>
+        </div>
+
+        <script>
+        const db = firebase.firestore();
+        const storage = firebase.storage();
+
+        $('#register').click(function(){
+            var 이메일 = $('#email-new').val();
+            var 패스워드 = $('#pw-new').val();
+            var 이름 = $('#name-new').val();
+            
+            firebase.auth().createUserWithEmailAndPassword(이메일, 패스워드).then((result)=>{
+            console.log(result)
+            console.log(result.user)
+            var user = result.user;
+            result.user.updateProfile( {displayName : 이름})
+            alert("회원 가입을 축하드립니다!");
+            window.location.href="/login.html";
+            }).catch((error) => {
+                alert("회원 가입 실패");
+            })
+        })
+        </script>
+    </body>
+</html>

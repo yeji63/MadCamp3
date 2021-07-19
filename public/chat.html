@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <!-- bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link href="chat.css" rel="stylesheet">
+        <link href="chat.js" rel="stylesheet">
+    </head>
+    <body>
+        <div id="chat-room">
+        </div>
+        <!-- update the version number as needed -->
+        <script src="/__/firebase/8.7.1/firebase-app.js"></script>
+        <script src="/__/firebase/8.7.1/firebase-database.js"></script>
+        <script src="/__/firebase/8.7.1/firebase-auth.js"></script>
+        <script src="/__/firebase/8.7.1/firebase-firestore.js"></script>
+        <script src="/__/firebase/8.7.1/firebase-storage.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script>
+            var firebaseConfig = {
+                apiKey: "AIzaSyDcou5T9263ShlgwpPQpFyozIXrUNUcj2w",
+                authDomain: "madcamp3-f199e.firebaseapp.com",
+                projectId: "madcamp3-f199e",
+                storageBucket: "madcamp3-f199e.appspot.com",
+                messagingSenderId: "645552582467",
+                appId: "1:645552582467:web:52b181505f2aefdcb889f6"
+            };
+            
+            var uid;
+
+        
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        firebaseDatabase = firebase.database();//파이어베이스 데이터베이스 객체
+
+        </script>
+        
+        <h1 style="display:none;"></h1>
+        <h1 style="display:none;"></h1>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <script>
+            const db = firebase.firestore();
+            const storage = firebase.storage();
+            var uid;
+
+            database.ref("")
+
+            firebase.auth().onAuthStateChanged((user)=> {
+                if(user) {
+                    uid = user.uid;
+                    var template = `<div class="message-box">
+                <div class="message-group" data-date-str="2021년 7월 19일 일요일">
+                    <div class="chat-message mine">
+                        <section><i class="fa fa-user"></i></section>
+                        <span>홍길동</span>
+                        <div>혹시 에눌되나요?</div>
+                    </div>
+                </div>
+
+                <div class="chat-message other">
+                    <section><i class="fa fa-user"></i></section>
+                    <span>${uid}</span>
+                    <div>안돼요.</div>
+                </div>
+                
+                <div class="message-group" data-date-str="2021년 7월 19일 월요일">
+                    <div class="chat-message mine">
+                        <section><i class="fa fa-user"></i></section>
+                        <span>홍길동</span>
+                        <div>아.. 조금 더 알아보고 연락드릴게요</div>
+                    </div>
+
+                    <div class="chat-message other">
+                        <section><i class="fa fa-user"></i></section>
+                        <span>${uid}</span>
+                        <div>네</div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="input-box">
+                <input type="text" id="text-input">
+                <div class="btn-plus">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </div>
+                <div class="btn-emo">
+                    <i class="fa fa-smile-o" aria-hidden="true"></i>
+                </div>
+                <div class="btn-submit">
+                    <span>전송</span>
+                </div>
+            </div>`;
+            $('#chat-room').append(template);
+                    }
+                    else {
+                        console.log("error");
+                    }
+                })
+                
+        </script>
+            
+    </body>
+</html>

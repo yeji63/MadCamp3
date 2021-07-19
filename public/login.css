@@ -1,0 +1,63 @@
+.box-wrap {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: contents;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.mt-3 h2 {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding-left: 30px;
+  font-size: 2.5rem;
+  color: black;
+}
+.mb-2 input {
+  border: none;
+  background: none;
+  text-align: center;
+  outline: none;
+  padding: 10px;
+  margin: 20px;
+  color: black;
+  height: 40px;
+  width: 70%;
+  border-radius: 40px;
+  transition: 0.2s ease-in;
+}
+
+.mb-2 input[type="email"],
+.mb-2 input[type="password"] {
+  border: solid 2px #ffc400;
+  width: 40%;
+  height: 45px;
+}
+.mb-2 button[type="submit"] {
+  margin-top: 20px;
+  border: solid 2px #ffffff;
+  margin-left: 20px;
+  box-sizing: border-box;
+  height: 50px;
+  cursor: pointer;
+  color: black;
+  width: 40%;
+}
+
+.mb-2 input[type="email"]:focus,
+.mb-2 input[type="password"]:focus {
+  border: solid 2px #ffc400;
+}
+.mb-2 button[type="submit"]:hover {
+  background: #ffc400;
+  color: #000;
+}
+
+.caption {
+  padding-top: 20px;
+  padding-left: 32%;
+}

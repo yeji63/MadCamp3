@@ -11,12 +11,14 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link href="main.css" rel="stylesheet">
+    <link href="login.css" rel="stylesheet">
 
   </head>
   <body>
     <!-- update the version number as needed -->
     <script src="/__/firebase/8.7.1/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
+    <script src="/__/firebase/8.7.1/firebase-database.js"></script>
     <script src="/__/firebase/8.7.1/firebase-auth.js"></script>
     <script src="/__/firebase/8.7.1/firebase-firestore.js"></script>
     <script src="/__/firebase/8.7.1/firebase-storage.js"></script>
@@ -30,6 +32,7 @@
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <script>
+       var firebaseUser; //파이어베이스 유저 전역변수
       var firebaseConfig = {
       apiKey: "AIzaSyDcou5T9263ShlgwpPQpFyozIXrUNUcj2w",
       authDomain: "madcamp3-f199e.firebaseapp.com",
@@ -41,6 +44,7 @@
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
 
+      firebaseDatabase = firebase.database();//파이어베이스 데이터베이스 객체
     </script>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -55,10 +59,10 @@
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
+              <a class="nav-link" href="upload.html">Upload</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
+              <a class="nav-link" href="login.html">Login</a>
             </li>
             <li class="nav-item">
               <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -69,36 +73,49 @@
     </nav>
 
     <div class="container mt-3">
-        <div class="mb-3">
-          <input type="text" class="form-control" placeholder="name" id="name-new">
-        </div>
-        <div class="mb-3">
-          <input type="email" class="form-control" placeholder="email" id="email-new">
-        </div>
-        <div class="mb-3">
-          <input type="password" class="form-control" placeholder="pw" id="pw-new">
-        </div>
-        <button type="submit" class="btn btn-primary" id="register">가입하기</button>
-     </div>
+      <div class="mb-2">
+      <h2> LOGIN</h2>
+      <input type="email" class="form-control" placeholder="email" id="email">
+      <input type="password" class="form-control" placeholder="pw" id="pw">
+      <button type="submit" class="btn btn-danger" id="login">기존회원 로그인</button>
+      </div>
+      <div class="caption">
+          <a href="register.html">회원 가입</a>
+      </div>
+    </div>
 
 
     <script>
       const db = firebase.firestore();
       const storage = firebase.storage();
 
-      $('#register').click(function(){
+      $('#login').click(function(){
+            var 이메일 = $('#email').val();
+            var 패스워드 = $('#pw').val();
+            
+            firebase.auth().signInWithEmailAndPassword(이메일, 패스워드).then((result) => {
+                //console.log(result.user);
+                firebaseUser = result.user;
+                loginSuccess(firebaseUser);
+                //alert("로그인 되었습니다.");
+                //window.location.href = "/index.html";
+            }).catch((err) => {
+                alert("비밀번호가 틀렸습니다.");
+            })
+        });
+        function loginSuccess(firebaseUser){
+            firebaseDatabase.ref("users/"+firebaseUser.uid).once('value').then(function(snapshot){
+                console.log(snapshot.val().name);
+            });
+            alert("로그인 되었습니다.");
+            window.location.href = "/index.html";
+        }
 
-        var 이메일 = $('#email-new').val();
-        var 패스워드 = $('#pw-new').val();
-
-        firebase.auth().createUserWithEmailAndPassword(이메일, 패스워드).then((result)=>{
-        console.log(result)
-        console.log(result.user)
-        }).catch()
-      })
-
-      
-
+    </script>
+    <script>
+    $('#logout').click(function() {
+      firebase.auth().signOut();
+    })
     </script>
 
   </body>
