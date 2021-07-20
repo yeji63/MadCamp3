@@ -8,9 +8,13 @@ ___
 ## 프로젝트 설명
 
 ### 로그인 및 회원가입
+<img width="800" alt="carrot_login" src="https://user-images.githubusercontent.com/77380770/126320392-fdbb48e5-2129-43f3-b4d6-daf59025ad36.PNG"> <img width="800" alt="carrot_regi" src="https://user-images.githubusercontent.com/77380770/126320395-94594ed4-ad2d-40fb-8aa8-558158bce40e.PNG">
+
 > Google Firebase의 Authentication을 이용하여 이메일을 통한 회원가입과 로그인 기능 구현
 
 ### 상품 목록
+<img width="800" alt="carrot_main" src="https://user-images.githubusercontent.com/77380770/126320384-059539c4-91d8-49cc-a2a0-9397ebe7cf20.PNG">
+
 > 사용자들이 등록한 상품들의 목록
 >
 > 상품의 사진과, 글 제목, 시간, 가격 표시
@@ -24,6 +28,11 @@ ___
 >> '채팅하기' 버튼 누르면 판매자와 채팅창으로 이동
 >
 > 글 제목과 게시 시간, 가격, 판매자가 작성한 내용 확인 가능 
+
+### 상품 업로드
+<img width="960" alt="carrot_upload" src="https://user-images.githubusercontent.com/77380770/126320389-519a63c6-7873-45f4-8def-7c086b2fec3b.PNG">
+
+> 제목과 내용과 가격을 입력하여 상품을 올릴 수 있으며, 사진은 필수로 첨부해야 글 작성 가능
 
 ### 채팅
 > 판매자에게 상품에 대한 문의를 위해 채팅을 걸 수 있음
