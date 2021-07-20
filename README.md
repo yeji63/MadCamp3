@@ -11,7 +11,9 @@ ___
 <img width="800" alt="carrot_login" src="https://user-images.githubusercontent.com/77380770/126320392-fdbb48e5-2129-43f3-b4d6-daf59025ad36.PNG"> <img width="800" alt="carrot_regi" src="https://user-images.githubusercontent.com/77380770/126320395-94594ed4-ad2d-40fb-8aa8-558158bce40e.PNG"> <img width="800" src="https://user-images.githubusercontent.com/77380770/126348489-39c3b923-ec0b-43b6-9028-d6fe613a65c2.png">
 
 > Google Firebase의 Authentication을 이용하여 이메일을 통한 회원가입과 로그인 기능 구현
+> 
 > 회원가입 시 이름, 이메일, 비밀번호를 입력받고, 로그인 시 이메일과 비밀번호 입력
+> 
 > Nav Bar에서 Logout 누르면, user의 이름과 함께 로그아웃 창
 
 ### 상품 목록
