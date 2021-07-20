@@ -37,4 +37,6 @@ ___
 > 제목과 내용과 가격을 입력하여 상품을 올릴 수 있으며, 사진은 필수로 첨부해야 글 작성 가능
 
 ### 채팅
+<img width="800" alt="carrot_chat" src="https://user-images.githubusercontent.com/77380770/126321824-1b8e6b28-046d-4c7d-aa25-d65e3fc0b489.PNG">
+
 > 판매자에게 상품에 대한 문의를 위해 채팅을 걸 수 있음
