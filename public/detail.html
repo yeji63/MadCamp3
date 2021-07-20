@@ -93,20 +93,18 @@
               name = docu.data().이름
               console.log("이름",name);
 
-              var template = `<img class="detailimg" src=${doc.data().이미지} style="width: 600px"; height:400px; display:block; margin:0 auto;"></img>
-          <div class="user">
-            <img class="profile" src='image/unknown.jpg' style="width: 5%; height: 5%; margin-top: 1%;"></img>
+              var template = `<img class="detailimg" src=${doc.data().이미지} style="width: 50%"; height:40%;"></img>
+          <div class="user" style="width: 50%; height: 45%;">
+            <img class="profile" src='image/unknown.jpg' style="width: 15%; height: 15%; margin-top: 1%;"></img>
             <span class="name" style="margin-top: 5%; margin-left: 1%; font-size: 20px; text-align: center; line-height: 80px">${name}</span>
-            <div class="btn" style="background-color: rgb(226, 226, 226); width: 100px; height: 40px; text-align: center; border-radius: 10px; cursor: pointer; display: inline-block; margin-left: 360px;">채팅하기</div>
+            <div class="btn" style="background-color: rgb(226, 226, 226); width: 150px; height: 50px; text-align: center; border-radius: 10px; cursor: pointer; float: right; margin-top: 7%">채팅하기</div>
           </div>
-          <hr width="600px">
-          <h5 class="title" style="font-size: 25px"><b>${doc.data().제목}</b></h5>
+          <hr width="50%">
+          <h5 class="title" style="font-size: 25px; width: 50%; height: 45%;"><b>${doc.data().제목}</b></h5>
           <p class="date" style="color: darkgrey;">${doc.data().날짜.toDate().getFullYear()}년 ${doc.data().날짜.toDate().getMonth()}월 ${doc.data().날짜.toDate().getDate()}일 
             ${doc.data().날짜.toDate().getHours()}시 ${doc.data().날짜.toDate().getMinutes()}분</p>
           <p class="price"><b>${doc.data().가격}원</b></p>
-          <p class="content" style="margins-top:600px; width: 600px; font-size: 18px; margin-bottom: 90px">${doc.data().내용}</p>
-          <hr width="600px">`;
-          
+          <p class="content" style="margins-top:600px; width: 50%; height: 45%;">${doc.data().내용}</p>`;
 
           $('.box').append(template)
 

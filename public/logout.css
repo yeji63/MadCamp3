@@ -1,0 +1,22 @@
+.box-wrap {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: contents;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.profilebox button[type="submit"] {
+  margin-top: 20px;
+  border: solid 2px #ffffff;
+  margin-left: 20px;
+  box-sizing: border-box;
+  height: 50px;
+  cursor: pointer;
+  color: black;
+  width: 40%;
+}
