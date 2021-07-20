@@ -22,6 +22,8 @@ ___
 > 상품 목록 중 하나 누르면, 해당 상품의 상세페이지로 이동
 
 ### 상품 상세
+<img width="800" alt="carrot_detail" src="https://user-images.githubusercontent.com/77380770/126321598-e789b553-1719-4df0-adce-7e2c0fb5a718.PNG">
+
 > 상품 목록에서 클릭하면 이동하는 페이지
 >
 > 판매자가 올린 사진과 판매자의 정보를 볼 수 있으며, 판매자에게 채팅하기 버튼 구현
@@ -30,7 +32,7 @@ ___
 > 글 제목과 게시 시간, 가격, 판매자가 작성한 내용 확인 가능 
 
 ### 상품 업로드
-<img width="960" alt="carrot_upload" src="https://user-images.githubusercontent.com/77380770/126320389-519a63c6-7873-45f4-8def-7c086b2fec3b.PNG">
+<img width="800" alt="carrot_upload" src="https://user-images.githubusercontent.com/77380770/126320389-519a63c6-7873-45f4-8def-7c086b2fec3b.PNG">
 
 > 제목과 내용과 가격을 입력하여 상품을 올릴 수 있으며, 사진은 필수로 첨부해야 글 작성 가능
 
