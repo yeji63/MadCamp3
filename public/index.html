@@ -28,13 +28,13 @@
               <a class="nav-link active" aria-current="page" href="index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="upload.html"> Upload</a>
+              <a class="nav-link" href="upload.html">Upload</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="login.html">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              <a class="nav-link" href="logout.html">Logout</a>
             </li>
           </ul>
         </div>
@@ -105,8 +105,24 @@
 
         })
         
-        
       })
+      firebase.auth().onAuthStateChanged((user)=> {
+                    if(user) {
+                      var goto;
+                        var storeuid={
+                            uid : user.uid
+                        }
+                        if(uid == null){
+                          goto = 'class="nav-link" href="login.html"';
+                        }
+                        else {
+                          goto = 'class="nav-link" href="logout.html"';
+                        }
+                      }
+                    else {
+                        console.log("error");
+                    }
+                })
     </script>
 
   </body>
