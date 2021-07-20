@@ -48,38 +48,54 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <script>
+            
+            console.log(localStorage.getItem('owner'));
+            var seller = localStorage.getItem('owner');
             const db = firebase.firestore();
             const storage = firebase.storage();
             var uid;
 
+            var userRef = db.collection("user");
+            userRef.doc(seller).get().then((doc)=>{
+                if(doc.exists){
+                    console.log("Document data:", doc.data());
+
+                } else {
+                    console.log("No such doc");
+                }
+            }).catch((error)=>{
+                console.log("Err getting doc: ", error);
+            })
+
             firebase.auth().onAuthStateChanged((user)=> {
+
                 if(user) {
                     uid = user.uid;
                     var template = `<div class="message-box">
                 <div class="message-group" data-date-str="2021년 7월 19일 일요일">
                     <div class="chat-message mine">
                         <section><i class="fa fa-user"></i></section>
-                        <span>홍길동</span>
+                        <span>${uid}</span>
                         <div>혹시 에눌되나요?</div>
                     </div>
                 </div>
 
                 <div class="chat-message other">
                     <section><i class="fa fa-user"></i></section>
-                    <span>${uid}</span>
+                    <span>상대방</span>
                     <div>안돼요.</div>
                 </div>
                 
                 <div class="message-group" data-date-str="2021년 7월 19일 월요일">
                     <div class="chat-message mine">
                         <section><i class="fa fa-user"></i></section>
-                        <span>홍길동</span>
+                        <span>${uid}</span>
                         <div>아.. 조금 더 알아보고 연락드릴게요</div>
                     </div>
 
                     <div class="chat-message other">
                         <section><i class="fa fa-user"></i></section>
-                        <span>${uid}</span>
+                        <span>상대방</span>
                         <div>네</div>
                     </div>
                     
