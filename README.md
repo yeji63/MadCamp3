@@ -11,6 +11,7 @@ ___
 <img width="800" alt="carrot_login" src="https://user-images.githubusercontent.com/77380770/126320392-fdbb48e5-2129-43f3-b4d6-daf59025ad36.PNG"> <img width="800" alt="carrot_regi" src="https://user-images.githubusercontent.com/77380770/126320395-94594ed4-ad2d-40fb-8aa8-558158bce40e.PNG">
 
 > Google Firebase의 Authentication을 이용하여 이메일을 통한 회원가입과 로그인 기능 구현
+> 회원가입 시 이름, 이메일, 비밀번호를 입력받고, 로그인 시 이메일과 비밀번호 입력
 
 ### 상품 목록
 <img width="800" alt="carrot_main" src="https://user-images.githubusercontent.com/77380770/126320384-059539c4-91d8-49cc-a2a0-9397ebe7cf20.PNG">
