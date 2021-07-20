@@ -74,19 +74,29 @@
     </script>
 
     <script>
-      console.log(localStorage.getItem('id'));
+      // console.log(localStorage.getItem('id'));
       const db = firebase.firestore();
       var productRef = db.collection("product");
       productRef.doc(localStorage.getItem('id')).get().then((doc)=>{
         if (doc.exists) {
           console.log("Document data:", doc.data());
-
-          //var seller = doc.data().판매자;
           
-          var template = `<img class="detailimg" src=${doc.data().이미지} style="width: 40%"; height:45%;"></img>
+          //user table에서 uid가 'product table의 판매자'로 이름 찾아오기
+          var name;
+          var seller;
+          seller = doc.data().판매자;
+          console.log("판매자", seller);
+          db.collection("user").where("uid", "==", seller).get().then((querySnapshot) => {
+            querySnapshot.forEach((docu) => {
+              // doc.data() is never undefined for query doc snapshots
+              console.log(docu.id, " => ", docu.data());
+              name = docu.data().이름
+              console.log("이름",name);
+
+              var template = `<img class="detailimg" src=${doc.data().이미지} style="width: 40%"; height:45%;"></img>
           <div class="user">
             <img class="profile" src='image/unknown.jpg' style="width: 5%; height: 5%; margin-top: 1%;"></img>
-            <span class="name" style="margin-top: 5%; margin-left: 1%; font-size: 20px; text-align: center; line-height: 80px">이름</span>
+            <span class="name" style="margin-top: 5%; margin-left: 1%; font-size: 20px; text-align: center; line-height: 80px">${name}</span>
             <div class="btn" style="background-color: rgb(226, 226, 226); width: 100px; height: 40px; text-align: center; border-radius: 10px; cursor: pointer; display: inline-block; margin-left: 18%;">채팅하기</div>
           </div>
           <hr width="40%">
@@ -105,6 +115,11 @@
             localStorage.setItem('owner', doc.data().판매자);
             location.href="chat.html";
           })
+
+            });
+          }).catch((error) => {
+            console.log("Error getting documents: ", error);
+          });
 
         } else {
             // doc.data() will be undefined in this case

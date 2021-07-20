@@ -94,8 +94,6 @@
             var user = result.user;
             result.user.updateProfile( {displayName : name})
 
-            var docid;
-
             db.collection('user').add(store).then((result)=>{
                 console.log(result);
 
