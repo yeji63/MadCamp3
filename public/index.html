@@ -17,7 +17,8 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">CARROT MARKET</a>
+        <!-- <a class="navbar-brand" href="#">CARROT MARKET</a> -->
+        <img class="navbar-brand" src="image/carrot.png" alt="당근마켓" width="10%" height="10%" href="index.html">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -42,6 +43,7 @@
 
 
     <div class="container mt-3">
+      <h3>인기중고</h3>
     </div>
 
 
@@ -92,11 +94,10 @@
             <p class="date">${doc.data().날짜.toDate().getFullYear()}년 ${doc.data().날짜.toDate().getMonth()}월 ${doc.data().날짜.toDate().getDate()}일 
               ${doc.data().날짜.toDate().getHours()}시 ${doc.data().날짜.toDate().getMinutes()}분</p>
             <p class="price">${doc.data().가격}원</p>
-            <p class="float-end">🤍0</p>
+            <p class="float-end">🤍4</p>
           </div>
           </div>`;
           $('.container').append(템플릿)
-          
           $(".title").click(function(){
             arr.push(doc.id)
             console.log(doc.id + "아이디 출력");
@@ -107,7 +108,6 @@
           })
 
         })
-        ㄴ
         
         var title = document.getElementsByClassName("title");
         title.click(function(){
