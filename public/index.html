@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MadCamp3: 당근마켓</title>
 
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
@@ -85,8 +85,7 @@
       db.collection('product').get().then((결과)=>{
         결과.forEach((doc)=>{
           console.log(doc.data())
-          //arr.push(doc.data().제목)
-          //console.log(arr);
+
           var 템플릿 = `<div class="product">
           <div class="thumbnail" style="background-image: url(${doc.data().이미지})"></div>
           <div class="flex-grow-1 p-4">
@@ -100,9 +99,6 @@
           $('.container').append(템플릿)
           $(".title").click(function(){
             arr.push(doc.id)
-            console.log(doc.id + "아이디 출력");
-            console.log(arr[0]+ "찾았다아이디");
-            //console.log(doc.data().제목+"클릭되었음");
             localStorage.setItem('id', arr[0]);
             location.href="detail.html"
           })
@@ -110,17 +106,6 @@
         })
         
         
-        // var title = document.getElementsByClassName("title");
-        // title.click(function(){
-        //     var id_check = $(this).attr("id");
-        //     console.log(doc.data().제목+"클릭되었음");
-            // console.log(event.target.nodeName); //H5
-            // console.log(event.target.value);  //undefined
-            // console.log(event.currentTarget.value)  //undefined
-            // console.log($(event.target))
-            // console.log($(event.currentTarget))
-            // localStorage.setItem('title', title);
-          // });
       })
     </script>
 
